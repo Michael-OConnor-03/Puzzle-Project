@@ -32,7 +32,7 @@ public class Puzzles {
 	}
 
 	public static String[][] fillPuzzle(String[] s, String[][] p, int strSize, int puzzleSize) {
-		//this method is used to fill up the 2D array with the needed puzzle pieces
+		//This method is used to fill up the 2D array with the needed puzzle pieces
 		//I didn't really need this but it helped minimize repetition
 		int a = 0, index = 0;
 		while(a < strSize) {
@@ -49,6 +49,8 @@ public class Puzzles {
 	}
 	
 	public static void printPuzzle(String[][] puzzle) {
+		//Prints the puzzle
+		//Also here to minimize repetition lik with fillPuzzle
 		switch(puzzle.length) {
 		case 3:
 			for(int i = 0; i < 3; i++) {
@@ -108,6 +110,7 @@ public class Puzzles {
 	}
 	
 	public String[][] fileReader(String[][] puzzle) throws IOException {
+		//This method works with fillPuzzle to fill the 2D array with needed puzzle pieces based on the choice in puzzleSelector
 		String[][] puzzles = puzzleSelector(puzzle);
 		String fileName = "";
 		int size = 0;
@@ -145,13 +148,14 @@ public class Puzzles {
 		
 		for(int i = 0; i < rows; i++) {
 			for(int j = 0; j < columns; j++) {
-				solvedPuzzle[i][j] = Integer.toString(value);
+				solvedPuzzle[i][j] = Integer.toString(value); 
+				//solvedPuzzle is filled with the correctly ordered puzzle pieces with each loop iteration
 				if(puzzle[i][j].equals(solvedPuzzle[i][j])) {
 					check = true;
 				}
 				else {
 					check = false;
-					break;
+					break; //if the puzzle doesn't match with solvedPuzzle, loop ends
 				}
 				value++;
 			}
